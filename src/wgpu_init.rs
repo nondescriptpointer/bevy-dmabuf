@@ -65,6 +65,7 @@ fn init_graphics() -> color_eyre::Result<(
         ash::khr::timeline_semaphore::NAME,
         ash::khr::imageless_framebuffer::NAME,
         ash::khr::image_format_list::NAME,
+        ash::khr::external_semaphore_fd::NAME,
         #[cfg(target_os = "macos")]
         ash::khr::portability_subset::NAME,
         #[cfg(target_os = "macos")]
