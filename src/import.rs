@@ -159,6 +159,20 @@ impl ImportedDmatexs {
             .insert(handle.clone_weak(), DmaImage::Imported(tex));
         handle
     }
+    pub fn update_imported_texture(
+        &self,
+        handle: &Handle<Image>,
+        tex: ImportedTexture,
+    ) -> bool {
+        #[expect(clippy::unwrap_used)]
+        let mut guard = self.0.lock().unwrap();
+        if guard.contains_key(handle) {
+            guard.insert(handle.clone_weak(), DmaImage::Imported(tex));
+            true
+        } else {
+            false
+        }
+    }
 }
 
 fn acquire_dmatex_images(world: &mut World) {
